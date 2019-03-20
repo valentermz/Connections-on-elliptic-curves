@@ -2,6 +2,8 @@
 
 # Logarithmic connections on elliptic curves
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/valentermz/Connections-on-elliptic-curves/master)
+
 These computations are work in progress for my research project at IRMAR.
 
 We're studying rank 2 meromorphic connections over a (complex) elliptic curve C having exactly two logarithmic singularities. Consider the quotient of C by its elliptic involution. This defines a map from the curve C to the Riemann sphere. We have to approaches:
