@@ -13193,7 +13193,8 @@ Here we denote these variables as follows:</p>
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">display</span> latex
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># If running locally, you can choose to display all output as latex by default</span>
+<span class="o">%</span><span class="k">display</span> latex
 </pre></div>
 
     </div>
@@ -13734,7 +13735,7 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 <span class="n">sigma0</span> <span class="o">=</span> <span class="n">vector</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma_psi</span><span class="p">])</span>
 <span class="n">sigma1</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">sigma0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">Nabla</span><span class="o">*</span><span class="n">sigma0</span>
 
-<span class="n">APPpsi</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="n">sigma0</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">])</span><span class="o">.</span><span class="n">determinant</span><span class="p">()</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
+<span class="n">APPpsi</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span><span class="n">sigma0</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">])</span><span class="o">.</span><span class="n">determinant</span><span class="p">()</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
 
 <span class="k">print</span> <span class="n">APPpsi</span>
 </pre></div>
@@ -13753,7 +13754,7 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4*c1*t1*t2^2*u1*u2^2 - 4*c1*t2^2*u1^2*u2^2 + 4*c2*t1*t2^2*u2^3 - 4*c2*t1*t2*u2^4 + 8*c1*t1*t2^2*u1*u2*x - 8*c1*t2^2*u1^2*u2*x - 4*c1*t1*t2^2*u2^2*x + 4*c2*t1*t2^2*u2^2*x - 8*c1*t1*t2*u1*u2^2*x + 4*c1*t2^2*u1*u2^2*x + 8*c1*t2*u1^2*u2^2*x - 8*c2*t1*t2*u2^3*x - 4*c2*t2^2*u2^3*x + 4*c2*t1*u2^4*x + 4*c2*t2*u2^4*x - 4*c1*t2^2*u1^2*x^2 + 8*c1*t2*u1^2*u2*x^2 - 4*c2*t2^2*u2^2*x^2 - 4*c1*u1^2*u2^2*x^2 + 8*c2*t2*u2^3*x^2 - 4*c2*u2^4*x^2 - 8*c1*t1*t2^2*u1*u2 + 8*c1*t2^2*u1^2*u2 - 8*c2*t1*t2^2*u2^2 + 4*nu*t1*t2^2*u2^2 - 8*nu*t2^2*u1*u2^2 + 8*c2*t1*t2*u2^3 - 4*c1*t1*t2^2*u1*x + 8*c1*t2^2*u1^2*x - 4*c2*t1*t2^2*u2*x + 8*nu*t1*t2^2*u2*x - 16*nu*t2^2*u1*u2*x - 8*c1*t2*u1^2*u2*x + 8*c1*t1*t2*u2^2*x + 8*c2*t1*t2*u2^2*x - 8*nu*t1*t2*u2^2*x + 8*c2*t2^2*u2^2*x + 4*nu*t2^2*u2^2*x + 4*c1*t1*u1*u2^2*x - 8*c1*t2*u1*u2^2*x + 16*nu*t2*u1*u2^2*x - 4*c2*t1*u2^3*x - 8*c2*t2*u2^3*x + 4*c1*t2^2*u1*x^2 - 8*nu*t2^2*u1*x^2 + 4*c2*t2^2*u2*x^2 - 8*c1*t2*u1*u2*x^2 + 16*nu*t2*u1*u2*x^2 - 8*c2*t2*u2^2*x^2 + 4*c1*u1*u2^2*x^2 - 8*nu*u1*u2^2*x^2 + 4*c2*u2^3*x^2 + 4*c1*t1*t2^2*u1 - 4*c1*t2^2*u1^2 + 4*c2*t1*t2^2*u2 - 8*nu*t1*t2^2*u2 + 16*nu*t2^2*u1*u2 - 4*c2*t1*t2*u2^2 + 2*t1*t2^2*u2^2 - 2*t1*t2*u2^3 - 4*nu*t1*t2^2*x - 4*c1*t2^2*u1*x + 16*nu*t2^2*u1*x - 4*c2*t2^2*u2*x + 8*c1*t2*u1*u2*x - 16*nu*t2*u1*u2*x - 4*c1*t1*u2^2*x + 4*nu*t1*u2^2*x + 4*c2*t2*u2^2*x - 8*nu*t2*u2^2*x - 2*t1*t2*u2^2*x - 2*t2^2*u2^2*x + 2*t1*u2^3*x + 2*t2*u2^3*x + 4*nu*t2^2*x^2 - 8*nu*t2*u2*x^2 + 4*nu*u2^2*x^2 + 2*t2*u2^2*x^2 - 2*u2^3*x^2 + 4*nu*t1*t2^2 - 8*nu*t2^2*u1 - 2*t1*t2^2*u2 + 2*t1*t2*u2^2 - 4*nu*t2^2*x + 8*nu*t2*u2*x + 2*t1*t2*u2*x + 2*t2^2*u2*x - 2*t1*u2^2*x - 2*t2*u2^2*x - 2*t2*u2*x^2 + 2*u2^2*x^2
+<pre>2*c1*t1*t2^2*u1*u2^2 - 2*c1*t2^2*u1^2*u2^2 + 2*c2*t1*t2^2*u2^3 - 2*c2*t1*t2*u2^4 + 4*c1*t1*t2^2*u1*u2*x - 4*c1*t2^2*u1^2*u2*x - 2*c1*t1*t2^2*u2^2*x + 2*c2*t1*t2^2*u2^2*x - 4*c1*t1*t2*u1*u2^2*x + 2*c1*t2^2*u1*u2^2*x + 4*c1*t2*u1^2*u2^2*x - 4*c2*t1*t2*u2^3*x - 2*c2*t2^2*u2^3*x + 2*c2*t1*u2^4*x + 2*c2*t2*u2^4*x - 2*c1*t2^2*u1^2*x^2 + 4*c1*t2*u1^2*u2*x^2 - 2*c2*t2^2*u2^2*x^2 - 2*c1*u1^2*u2^2*x^2 + 4*c2*t2*u2^3*x^2 - 2*c2*u2^4*x^2 - 4*c1*t1*t2^2*u1*u2 + 4*c1*t2^2*u1^2*u2 - 4*c2*t1*t2^2*u2^2 + 2*nu*t1*t2^2*u2^2 - 4*nu*t2^2*u1*u2^2 + 4*c2*t1*t2*u2^3 - 2*c1*t1*t2^2*u1*x + 4*c1*t2^2*u1^2*x - 2*c2*t1*t2^2*u2*x + 4*nu*t1*t2^2*u2*x - 8*nu*t2^2*u1*u2*x - 4*c1*t2*u1^2*u2*x + 4*c1*t1*t2*u2^2*x + 4*c2*t1*t2*u2^2*x - 4*nu*t1*t2*u2^2*x + 4*c2*t2^2*u2^2*x + 2*nu*t2^2*u2^2*x + 2*c1*t1*u1*u2^2*x - 4*c1*t2*u1*u2^2*x + 8*nu*t2*u1*u2^2*x - 2*c2*t1*u2^3*x - 4*c2*t2*u2^3*x + 2*c1*t2^2*u1*x^2 - 4*nu*t2^2*u1*x^2 + 2*c2*t2^2*u2*x^2 - 4*c1*t2*u1*u2*x^2 + 8*nu*t2*u1*u2*x^2 - 4*c2*t2*u2^2*x^2 + 2*c1*u1*u2^2*x^2 - 4*nu*u1*u2^2*x^2 + 2*c2*u2^3*x^2 + 2*c1*t1*t2^2*u1 - 2*c1*t2^2*u1^2 + 2*c2*t1*t2^2*u2 - 4*nu*t1*t2^2*u2 + 8*nu*t2^2*u1*u2 - 2*c2*t1*t2*u2^2 + t1*t2^2*u2^2 - t1*t2*u2^3 - 2*nu*t1*t2^2*x - 2*c1*t2^2*u1*x + 8*nu*t2^2*u1*x - 2*c2*t2^2*u2*x + 4*c1*t2*u1*u2*x - 8*nu*t2*u1*u2*x - 2*c1*t1*u2^2*x + 2*nu*t1*u2^2*x + 2*c2*t2*u2^2*x - 4*nu*t2*u2^2*x - t1*t2*u2^2*x - t2^2*u2^2*x + t1*u2^3*x + t2*u2^3*x + 2*nu*t2^2*x^2 - 4*nu*t2*u2*x^2 + 2*nu*u2^2*x^2 + t2*u2^2*x^2 - u2^3*x^2 + 2*nu*t1*t2^2 - 4*nu*t2^2*u1 - t1*t2^2*u2 + t1*t2*u2^2 - 2*nu*t2^2*x + 4*nu*t2*u2*x + t1*t2*u2*x + t2^2*u2*x - t1*u2^2*x - t2*u2^2*x - t2*u2*x^2 + u2^2*x^2
 </pre>
 </div>
 </div>
@@ -13775,7 +13776,7 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">diff</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">APPpsi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>  <span class="c1"># quadratic term</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">printMath</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">APPpsi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">())</span>  <span class="c1"># quadratic term</span>
 </pre></div>
 
     </div>
@@ -13788,12 +13789,13 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[19]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}-2 \, {\left(2 \, c_{1} t_{2} u_{1}^{2} - 2 \, c_{1} u_{1}^{2} u_{2} + 2 \, c_{2} t_{2} u_{2}^{2} - 2 \, c_{2} u_{2}^{3} - 2 \, c_{1} t_{2} u_{1} + 4 \, \nu t_{2} u_{1} - 2 \, c_{2} t_{2} u_{2} + 2 \, c_{1} u_{1} u_{2} - 4 \, \nu u_{1} u_{2} + 2 \, c_{2} u_{2}^{2} - 2 \, \nu t_{2} + 2 \, \nu u_{2} - u_{2}^{2} + u_{2}\right)} {\left(t_{2} - u_{2}\right)}</script></html>
+
+<div class="output_latex output_subarea ">
+$$-{\left(2 \, c_{1} t_{2} u_{1}^{2} - 2 \, c_{1} u_{1}^{2} u_{2} + 2 \, c_{2} t_{2} u_{2}^{2} - 2 \, c_{2} u_{2}^{3} - 2 \, c_{1} t_{2} u_{1} + 4 \, \nu t_{2} u_{1} - 2 \, c_{2} t_{2} u_{2} + 2 \, c_{1} u_{1} u_{2} - 4 \, \nu u_{1} u_{2} + 2 \, c_{2} u_{2}^{2} - 2 \, \nu t_{2} + 2 \, \nu u_{2} - u_{2}^{2} + u_{2}\right)} {\left(t_{2} - u_{2}\right)}$$
 </div>
 
 </div>
@@ -13807,7 +13809,7 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">diff</span><span class="p">(</span><span class="n">APPpsi</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>  <span class="c1"># linear term</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">printMath</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">APPpsi</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">())</span>  <span class="c1"># linear term</span>
 </pre></div>
 
     </div>
@@ -13820,12 +13822,13 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}8 \, c_{1} t_{1} t_{2}^{2} u_{1} u_{2} - 8 \, c_{1} t_{2}^{2} u_{1}^{2} u_{2} - 4 \, c_{1} t_{1} t_{2}^{2} u_{2}^{2} + 4 \, c_{2} t_{1} t_{2}^{2} u_{2}^{2} - 8 \, c_{1} t_{1} t_{2} u_{1} u_{2}^{2} + 4 \, c_{1} t_{2}^{2} u_{1} u_{2}^{2} + 8 \, c_{1} t_{2} u_{1}^{2} u_{2}^{2} - 8 \, c_{2} t_{1} t_{2} u_{2}^{3} - 4 \, c_{2} t_{2}^{2} u_{2}^{3} + 4 \, c_{2} t_{1} u_{2}^{4} + 4 \, c_{2} t_{2} u_{2}^{4} - 4 \, c_{1} t_{1} t_{2}^{2} u_{1} + 8 \, c_{1} t_{2}^{2} u_{1}^{2} - 4 \, c_{2} t_{1} t_{2}^{2} u_{2} + 8 \, \nu t_{1} t_{2}^{2} u_{2} - 16 \, \nu t_{2}^{2} u_{1} u_{2} - 8 \, c_{1} t_{2} u_{1}^{2} u_{2} + 8 \, c_{1} t_{1} t_{2} u_{2}^{2} + 8 \, c_{2} t_{1} t_{2} u_{2}^{2} - 8 \, \nu t_{1} t_{2} u_{2}^{2} + 8 \, c_{2} t_{2}^{2} u_{2}^{2} + 4 \, \nu t_{2}^{2} u_{2}^{2} + 4 \, c_{1} t_{1} u_{1} u_{2}^{2} - 8 \, c_{1} t_{2} u_{1} u_{2}^{2} + 16 \, \nu t_{2} u_{1} u_{2}^{2} - 4 \, c_{2} t_{1} u_{2}^{3} - 8 \, c_{2} t_{2} u_{2}^{3} - 4 \, \nu t_{1} t_{2}^{2} - 4 \, c_{1} t_{2}^{2} u_{1} + 16 \, \nu t_{2}^{2} u_{1} - 4 \, c_{2} t_{2}^{2} u_{2} + 8 \, c_{1} t_{2} u_{1} u_{2} - 16 \, \nu t_{2} u_{1} u_{2} - 4 \, c_{1} t_{1} u_{2}^{2} + 4 \, \nu t_{1} u_{2}^{2} + 4 \, c_{2} t_{2} u_{2}^{2} - 8 \, \nu t_{2} u_{2}^{2} - 2 \, t_{1} t_{2} u_{2}^{2} - 2 \, t_{2}^{2} u_{2}^{2} + 2 \, t_{1} u_{2}^{3} + 2 \, t_{2} u_{2}^{3} - 4 \, \nu t_{2}^{2} + 8 \, \nu t_{2} u_{2} + 2 \, t_{1} t_{2} u_{2} + 2 \, t_{2}^{2} u_{2} - 2 \, t_{1} u_{2}^{2} - 2 \, t_{2} u_{2}^{2}</script></html>
+
+<div class="output_latex output_subarea ">
+$$4 \, c_{1} t_{1} t_{2}^{2} u_{1} u_{2} - 4 \, c_{1} t_{2}^{2} u_{1}^{2} u_{2} - 2 \, c_{1} t_{1} t_{2}^{2} u_{2}^{2} + 2 \, c_{2} t_{1} t_{2}^{2} u_{2}^{2} - 4 \, c_{1} t_{1} t_{2} u_{1} u_{2}^{2} + 2 \, c_{1} t_{2}^{2} u_{1} u_{2}^{2} + 4 \, c_{1} t_{2} u_{1}^{2} u_{2}^{2} - 4 \, c_{2} t_{1} t_{2} u_{2}^{3} - 2 \, c_{2} t_{2}^{2} u_{2}^{3} + 2 \, c_{2} t_{1} u_{2}^{4} + 2 \, c_{2} t_{2} u_{2}^{4} - 2 \, c_{1} t_{1} t_{2}^{2} u_{1} + 4 \, c_{1} t_{2}^{2} u_{1}^{2} - 2 \, c_{2} t_{1} t_{2}^{2} u_{2} + 4 \, \nu t_{1} t_{2}^{2} u_{2} - 8 \, \nu t_{2}^{2} u_{1} u_{2} - 4 \, c_{1} t_{2} u_{1}^{2} u_{2} + 4 \, c_{1} t_{1} t_{2} u_{2}^{2} + 4 \, c_{2} t_{1} t_{2} u_{2}^{2} - 4 \, \nu t_{1} t_{2} u_{2}^{2} + 4 \, c_{2} t_{2}^{2} u_{2}^{2} + 2 \, \nu t_{2}^{2} u_{2}^{2} + 2 \, c_{1} t_{1} u_{1} u_{2}^{2} - 4 \, c_{1} t_{2} u_{1} u_{2}^{2} + 8 \, \nu t_{2} u_{1} u_{2}^{2} - 2 \, c_{2} t_{1} u_{2}^{3} - 4 \, c_{2} t_{2} u_{2}^{3} - 2 \, \nu t_{1} t_{2}^{2} - 2 \, c_{1} t_{2}^{2} u_{1} + 8 \, \nu t_{2}^{2} u_{1} - 2 \, c_{2} t_{2}^{2} u_{2} + 4 \, c_{1} t_{2} u_{1} u_{2} - 8 \, \nu t_{2} u_{1} u_{2} - 2 \, c_{1} t_{1} u_{2}^{2} + 2 \, \nu t_{1} u_{2}^{2} + 2 \, c_{2} t_{2} u_{2}^{2} - 4 \, \nu t_{2} u_{2}^{2} - t_{1} t_{2} u_{2}^{2} - t_{2}^{2} u_{2}^{2} + t_{1} u_{2}^{3} + t_{2} u_{2}^{3} - 2 \, \nu t_{2}^{2} + 4 \, \nu t_{2} u_{2} + t_{1} t_{2} u_{2} + t_{2}^{2} u_{2} - t_{1} u_{2}^{2} - t_{2} u_{2}^{2}$$
 </div>
 
 </div>
@@ -13839,7 +13842,7 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">APPpsi</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>  <span class="c1"># constant term</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">printMath</span><span class="p">(</span><span class="n">APPpsi</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">())</span>  <span class="c1"># constant term</span>
 </pre></div>
 
     </div>
@@ -13852,12 +13855,13 @@ $ \displaystyle \sigma_\psi = \frac{(t_2-1)u_2x}{(t_2-u_2)x + t_2u_2 -t_2} . $</
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[21]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}2 \, {\left(2 \, c_{1} t_{1} t_{2} u_{1} u_{2} - 2 \, c_{1} t_{2} u_{1}^{2} u_{2} + 2 \, c_{2} t_{1} t_{2} u_{2}^{2} - 2 \, c_{2} t_{1} u_{2}^{3} - 2 \, c_{1} t_{1} t_{2} u_{1} + 2 \, c_{1} t_{2} u_{1}^{2} - 2 \, c_{2} t_{1} t_{2} u_{2} + 2 \, \nu t_{1} t_{2} u_{2} - 4 \, \nu t_{2} u_{1} u_{2} + 2 \, c_{2} t_{1} u_{2}^{2} - 2 \, \nu t_{1} t_{2} + 4 \, \nu t_{2} u_{1} + t_{1} t_{2} u_{2} - t_{1} u_{2}^{2}\right)} t_{2} {\left(u_{2} - 1\right)}</script></html>
+
+<div class="output_latex output_subarea ">
+$${\left(2 \, c_{1} t_{1} t_{2} u_{1} u_{2} - 2 \, c_{1} t_{2} u_{1}^{2} u_{2} + 2 \, c_{2} t_{1} t_{2} u_{2}^{2} - 2 \, c_{2} t_{1} u_{2}^{3} - 2 \, c_{1} t_{1} t_{2} u_{1} + 2 \, c_{1} t_{2} u_{1}^{2} - 2 \, c_{2} t_{1} t_{2} u_{2} + 2 \, \nu t_{1} t_{2} u_{2} - 4 \, \nu t_{2} u_{1} u_{2} + 2 \, c_{2} t_{1} u_{2}^{2} - 2 \, \nu t_{1} t_{2} + 4 \, \nu t_{2} u_{1} + t_{1} t_{2} u_{2} - t_{1} u_{2}^{2}\right)} t_{2} {\left(u_{2} - 1\right)}$$
 </div>
 
 </div>
@@ -14012,7 +14016,19 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">TT</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">S0</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">S1</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
-<span class="n">TT</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">printMath</span><span class="p">(</span><span class="n">TT</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14025,16 +14041,17 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\left(\begin{array}{rrr}
+
+<div class="output_latex output_subarea ">
+$$\left(\begin{array}{rrr}
 1 & 0 & 0 \\
 \frac{2 \, {\left(t_{1} t_{2} u_{1} - t_{1} t_{2} u_{2} - t_{1} u_{1} u_{2} + t_{2} u_{1} u_{2} - t_{2} u_{1} + t_{1} u_{2}\right)} {\left(t_{1} t_{2} - t_{1} u_{2} + t_{2} u_{2} - t_{2}\right)} \nu}{{\left(t_{1} - t_{2}\right)} {\left(t_{1} - 1\right)} t_{1} {\left(t_{2} - u_{2}\right)} {\left(u_{2} - 1\right)} u_{2}} & \frac{{\left(t_{1} t_{2} u_{1} - t_{1} t_{2} u_{2} - t_{1} u_{1} u_{2} + t_{2} u_{1} u_{2} - t_{2} u_{1} + t_{1} u_{2}\right)}^{2}}{{\left(t_{1} - t_{2}\right)} {\left(t_{1} - 1\right)} t_{1} {\left(t_{2} - u_{2}\right)} {\left(u_{2} - 1\right)} u_{2}} & 0 \\
 -\frac{{\left(2 \, t_{2}^{2} u_{1} - 2 \, t_{1} t_{2} u_{2} + t_{1} u_{2}^{2} - t_{2} u_{2}^{2} + t_{1} t_{2} - t_{2}^{2} - 2 \, t_{2} u_{1} + 2 \, t_{2} u_{2}\right)} \nu}{{\left(t_{1} - t_{2}\right)} {\left(t_{2} - u_{2}\right)} {\left(u_{2} - 1\right)} u_{2}} & -\frac{t_{2}^{2} u_{1}^{2} - 2 \, t_{1} t_{2} u_{1} u_{2} + t_{1} t_{2} u_{2}^{2} + t_{1} u_{1} u_{2}^{2} - t_{2} u_{1} u_{2}^{2} + t_{1} t_{2} u_{1} - t_{2}^{2} u_{1} - t_{2} u_{1}^{2} + 2 \, t_{2} u_{1} u_{2} - t_{1} u_{2}^{2}}{{\left(t_{1} - t_{2}\right)} {\left(t_{2} - u_{2}\right)} {\left(u_{2} - 1\right)} u_{2}} & 1
-\end{array}\right)</script></html>
+\end{array}\right)$$
 </div>
 
 </div>
@@ -14045,7 +14062,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Since Psi is an involution, the following should be the identity matrix</span>
@@ -14095,7 +14112,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="p">(</span><span class="n">TT</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>  <span class="c1"># - Sigma * Lambda / delta</span>
@@ -14111,7 +14128,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -14135,7 +14152,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">Pi</span> <span class="o">=</span> <span class="p">(</span><span class="n">t1</span><span class="o">*</span><span class="n">t2</span><span class="o">*</span><span class="n">u1</span> <span class="o">-</span> <span class="n">t1</span><span class="o">*</span><span class="n">t2</span><span class="o">*</span><span class="n">u2</span> <span class="o">-</span> <span class="n">t1</span><span class="o">*</span><span class="n">u1</span><span class="o">*</span><span class="n">u2</span> <span class="o">+</span> <span class="n">t2</span><span class="o">*</span><span class="n">u1</span><span class="o">*</span><span class="n">u2</span> <span class="o">-</span> <span class="n">t2</span><span class="o">*</span><span class="n">u1</span> <span class="o">+</span> <span class="n">t1</span><span class="o">*</span><span class="n">u2</span><span class="p">)</span>
@@ -14150,7 +14167,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">expr</span> <span class="o">=</span> <span class="n">Pi</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">delta</span> <span class="o">-</span> <span class="n">Lambda</span><span class="o">*</span><span class="n">Sigma</span>
@@ -14167,7 +14184,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[30]:</div>
+    <div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -14183,7 +14200,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="p">(</span><span class="n">delta</span><span class="o">-</span> <span class="n">Pi</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
@@ -14199,7 +14216,7 @@ The expressions <code>Eqn1</code> and <code>Eqn2</code> are quadratic in $c_1,c_
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[31]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14225,7 +14242,7 @@ $ \displaystyle du_1 \mapsto \Theta_1, \quad du_2 \mapsto \Theta_2. $</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">dpsi</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span>
@@ -14233,7 +14250,7 @@ $ \displaystyle du_1 \mapsto \Theta_1, \quad du_2 \mapsto \Theta_2. $</p>
     <span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">u1_bar</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">diff</span><span class="p">(</span><span class="n">u2</span><span class="p">,</span> <span class="n">u2</span><span class="p">)),</span>
 <span class="p">])</span>
 
-<span class="n">dpsi</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">u1</span><span class="o">==</span><span class="n">u1_bar</span><span class="p">)</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
+<span class="n">printMath</span><span class="p">(</span><span class="n">dpsi</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">u1</span><span class="o">==</span><span class="n">u1_bar</span><span class="p">)</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -14246,15 +14263,16 @@ $ \displaystyle du_1 \mapsto \Theta_1, \quad du_2 \mapsto \Theta_2. $</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\left(\begin{array}{rr}
+
+<div class="output_latex output_subarea ">
+$$\left(\begin{array}{rr}
 \frac{{\left(t_{1} t_{2} u_{1} - t_{1} t_{2} u_{2} - t_{1} u_{1} u_{2} + t_{2} u_{1} u_{2} - t_{2} u_{1} + t_{1} u_{2}\right)}^{2}}{{\left(t_{1} - t_{2}\right)} {\left(t_{1} - 1\right)} t_{1} {\left(t_{2} - u_{2}\right)} {\left(u_{2} - 1\right)} u_{2}} & 0 \\
 -\frac{t_{2}^{2} u_{1}^{2} - 2 \, t_{1} t_{2} u_{1} u_{2} + t_{1} t_{2} u_{2}^{2} + t_{1} u_{1} u_{2}^{2} - t_{2} u_{1} u_{2}^{2} + t_{1} t_{2} u_{1} - t_{2}^{2} u_{1} - t_{2} u_{1}^{2} + 2 \, t_{2} u_{1} u_{2} - t_{1} u_{2}^{2}}{{\left(t_{1} - t_{2}\right)} {\left(t_{2} - u_{2}\right)} {\left(u_{2} - 1\right)} u_{2}} & 1
-\end{array}\right)</script></html>
+\end{array}\right)$$
 </div>
 
 </div>
@@ -14284,7 +14302,7 @@ $ \displaystyle \mathrm{B}^{-1} = \frac{1}{2}\left( \nabla_0 + \Psi(\nabla_0 \ci
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># The &quot;base change matrix&quot; B, going from the standard basis Nabla_0, Theta_i to the equivariant versions \hat Nabla_0, \hat Theta_i</span>
@@ -14299,7 +14317,7 @@ $ \displaystyle \mathrm{B}^{-1} = \frac{1}{2}\left( \nabla_0 + \Psi(\nabla_0 \ci
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">B</span><span class="p">:</span>
@@ -14343,7 +14361,7 @@ $ \displaystyle \mathrm{B}^{-1} = \frac{1}{2}\left( \nabla_0 + \Psi(\nabla_0 \ci
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">B</span><span class="o">.</span><span class="n">determinant</span><span class="p">()</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>  <span class="c1"># conic Pi / (ramification_locus Sigma * tangent line Lambda)</span>
@@ -14359,7 +14377,7 @@ $ \displaystyle \mathrm{B}^{-1} = \frac{1}{2}\left( \nabla_0 + \Psi(\nabla_0 \ci
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[35]:</div>
+    <div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -14385,7 +14403,7 @@ $$ \Psi \;\colon\; (u_1,u_2) \mapsto (\bar{u}_1, u_2), \quad (c_1, c_2) \mapsto 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">c1_bar</span> <span class="o">=</span> <span class="p">(</span><span class="n">TT</span><span class="o">*</span><span class="n">vector</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]))[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span>
@@ -14412,7 +14430,7 @@ $$ \Psi \;\colon\; (u_1,u_2) \mapsto (\bar{u}_1, u_2), \quad (c_1, c_2) \mapsto 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Compute dc1_bar</span>
@@ -14450,7 +14468,7 @@ $$ \Psi \;\colon\; (u_1,u_2) \mapsto (\bar{u}_1, u_2), \quad (c_1, c_2) \mapsto 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dc1^du1&#39;</span><span class="p">,</span> <span class="s1">&#39;dc1^du2&#39;</span><span class="p">,</span> <span class="s1">&#39;dc2^du1&#39;</span><span class="p">,</span> <span class="s1">&#39;dc2^du2&#39;</span><span class="p">,</span> <span class="s1">&#39;dc1^dc2&#39;</span><span class="p">,</span> <span class="s1">&#39;du1^du2&#39;</span><span class="p">]</span>
@@ -14477,7 +14495,7 @@ $$ \Psi \;\colon\; (u_1,u_2) \mapsto (\bar{u}_1, u_2), \quad (c_1, c_2) \mapsto 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Simplify the above terms:</span>
@@ -14500,7 +14518,7 @@ $$ \Psi \;\colon\; (u_1,u_2) \mapsto (\bar{u}_1, u_2), \quad (c_1, c_2) \mapsto 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Print the pullback of omega by Psi</span>
@@ -14568,7 +14586,7 @@ $$ \left(\mathrm{T} - \mathrm{Id}\right) \begin{pmatrix}1\\ c_1 \\c_2\end{pmatri
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">minor</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">([</span>
@@ -14584,7 +14602,7 @@ $$ \left(\mathrm{T} - \mathrm{Id}\right) \begin{pmatrix}1\\ c_1 \\c_2\end{pmatri
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">minor</span><span class="o">.</span><span class="n">determinant</span><span class="p">()</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>  <span class="c1"># First factor of numerator is Sigma</span>
@@ -14600,7 +14618,7 @@ $$ \left(\mathrm{T} - \mathrm{Id}\right) \begin{pmatrix}1\\ c_1 \\c_2\end{pmatri
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[42]:</div>
+    <div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -14616,7 +14634,7 @@ $$ \left(\mathrm{T} - \mathrm{Id}\right) \begin{pmatrix}1\\ c_1 \\c_2\end{pmatri
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Along Sigma, T[1,1] is identically -1</span>
@@ -14633,7 +14651,7 @@ $$ \left(\mathrm{T} - \mathrm{Id}\right) \begin{pmatrix}1\\ c_1 \\c_2\end{pmatri
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[43]:</div>
+    <div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -14673,7 +14691,7 @@ Moreover, the last equation is simply <code>T[1,0] - 2*c1</code>, and its unique
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">t2</span><span class="o">*</span><span class="p">(</span><span class="n">u2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u2</span><span class="o">-</span><span class="n">t2</span><span class="p">)</span>
@@ -14695,7 +14713,7 @@ Moreover, the last equation is simply <code>T[1,0] - 2*c1</code>, and its unique
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">sigma_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">t2</span><span class="p">)</span>
@@ -14712,7 +14730,7 @@ Moreover, the last equation is simply <code>T[1,0] - 2*c1</code>, and its unique
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[45]:</div>
+    <div class="prompt output_prompt">Out[46]:</div>
 
 
 
@@ -14728,7 +14746,7 @@ Moreover, the last equation is simply <code>T[1,0] - 2*c1</code>, and its unique
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">sigma_2</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">t1</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">t2</span><span class="p">)</span>
@@ -14745,7 +14763,7 @@ Moreover, the last equation is simply <code>T[1,0] - 2*c1</code>, and its unique
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[46]:</div>
+    <div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -14777,7 +14795,7 @@ See: Section 9.4 in the paper.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># differential of Phi (ie transpose of Jacobian matrix)</span>
@@ -14794,7 +14812,7 @@ See: Section 9.4 in the paper.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Base change: Canonical -&gt; Original</span>
@@ -14827,7 +14845,7 @@ See: Section 9.4 in the paper.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Base change: Canonical -&gt; Equivariant</span>
@@ -14841,14 +14859,14 @@ See: Section 9.4 in the paper.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Rewrite it in terms of z,w</span>
 <span class="n">var</span><span class="p">(</span><span class="s1">&#39;Z W&#39;</span><span class="p">)</span>
 <span class="n">Sol1</span> <span class="o">=</span> <span class="n">solve</span><span class="p">([</span><span class="n">z</span><span class="o">-</span><span class="n">Z</span><span class="p">,</span> <span class="n">w</span><span class="o">-</span><span class="n">W</span><span class="p">],</span> <span class="p">[</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">CE_zw_vars</span> <span class="o">=</span> <span class="n">CE</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">Sol1</span><span class="p">)</span><span class="o">.</span><span class="n">simplify_rational</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
-<span class="n">CE_zw_vars</span>
+<span class="n">printMath</span><span class="p">(</span><span class="n">CE_zw_vars</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14861,16 +14879,17 @@ See: Section 9.4 in the paper.</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[50]:</div>
+    <div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\left(\begin{array}{rrr}
+
+<div class="output_latex output_subarea ">
+$$\left(\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 0 & \frac{Z - t_{2}}{Z - t_{1}} \\
 0 & -\frac{{\left(Z - t_{2}\right)}^{2}}{2 \, {\left(t_{2} - 1\right)} t_{2}} & \frac{{\left(W t_{1} - W t_{2} - t_{1} t_{2} + t_{2}\right)} {\left(Z - t_{2}\right)}}{2 \, {\left(Z - t_{1}\right)} {\left(t_{2} - 1\right)} t_{2}}
-\end{array}\right)</script></html>
+\end{array}\right)$$
 </div>
 
 </div>
@@ -14899,7 +14918,7 @@ The comutations are easier if we first pullback the Liouville 1-form $\eta_C = k
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">del</span> <span class="n">k1</span>
@@ -14931,7 +14950,7 @@ The comutations are easier if we first pullback the Liouville 1-form $\eta_C = k
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Compute dz</span>
@@ -14967,7 +14986,7 @@ The comutations are easier if we first pullback the Liouville 1-form $\eta_C = k
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Simplify the above terms:</span>
@@ -14999,7 +15018,7 @@ The comutations are easier if we first pullback the Liouville 1-form $\eta_C = k
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s1">&#39;dc1^du1 term:&#39;</span>
