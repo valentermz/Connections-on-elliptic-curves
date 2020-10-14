@@ -12,7 +12,8 @@ We study a moduli space of rank 2 logarithmic sl2-connections on an elliptic cur
 
 The Jupyter notebook `A-map-between-moduli-spaces.ipynb` containes the computations discussed in the paper. You can download/clone these repository and run it locally, or try launching binder.
 
-The file ``A-map-between-moduli-spaces_STATIC.html`` can be used to view only, in case the jupyter notebook does not render correctly on GitHub.
+The file ``A-map-between-moduli-spaces_STATIC.html`` can be used for viewing only, in case the jupyter notebook does not render correctly on GitHub. You can download it and open it in your browser.  
+Click here to download the static version: <a href="https://raw.githubusercontent.com/valentermz/Connections-on-elliptic-curves/master/A-map-between-moduli-spaces_STATIC.html" targe="_blank" download="STATIC.html">A-map-between-moduli-spaces_STATIC.html</a>.
 
 In `Additional-materials/` we have added some material not discussed in the paper.
 
